@@ -140,13 +140,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -395,7 +395,7 @@
 </blockquote>
 <p>The simple rules for traversing nested <em>Scope</em>: <em>Engine</em> starts at the currently executing <em>Scope</em>, looks for the variable there, then if not found, keeps going up one level, and so on. If the outermost global scope is reached, the search stops, whether it finds the variable or not.</p>
 <h3 id="Building-on-Metaphors"><a href="#Building-on-Metaphors" class="headerlink" title="Building on Metaphors"></a>Building on Metaphors</h3><p>To visualize the process of nested <em>Scope</em> resolution, I want you to think of this tall building.</p>
-<p><img src="fig1.png" width="250"></p>
+<p><img src="/2018/03/01/scope-closures/fig1.png" width="250"></p>
 <p>The building represents our program’s nested <em>Scope</em> rule set. The first floor of the building represents your currently executing <em>Scope</em>, wherever you are. The top level of the building is the global <em>Scope</em>.</p>
 <p>You resolve LHS and RHS references by looking on your current floor, and if you don’t find it, taking the elevator to the next floor, looking there, then the next, and so on. Once you get to the top floor (the global <em>Scope</em>), you either find what you’re looking for, or you don’t. But you have to stop regardless.</p>
 <h2 id="Errors"><a href="#Errors" class="headerlink" title="Errors"></a>Errors</h2><p>Why does it matter whether we call it LHS or RHS?</p>
@@ -440,7 +440,7 @@
 <p>Let’s consider this block of code:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> b = a * <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log( a, b, c );</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	bar(b * <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo( <span class="number">2</span> ); <span class="comment">// 2 4 12</span></span><br></pre></td></tr></table></figure>
 <p>There are three nested scopes inherent in this code example. It may be helpful to think about these scopes as bubbles inside of each other.</p>
-<p><img src="fig2.png" width="500"></p>
+<p><img src="/2018/03/01/scope-closures/fig2.png" width="500"></p>
 <p><strong>Bubble 1</strong> encompasses the global scope, and has just one identifier in it: <code>foo</code>.</p>
 <p><strong>Bubble 2</strong> encompasses the scope of <code>foo</code>, which includes the three identifiers: <code>a</code>, <code>bar</code> and <code>b</code>.</p>
 <p><strong>Bubble 3</strong> encompasses the scope of <code>bar</code>, and it includes just one identifier: <code>c</code>.</p>
@@ -926,23 +926,29 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2018/03/01/scope-closures/">scope &amp; closures</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">LAOJIA</a></p>
-        <p><span>Created:</span>2018-03-01, 11:34:20</p>
-        <p><span>Updated:</span>2018-03-01, 11:39:06</p>
+        <p><span>本文标题:</span><a href="/2018/03/01/scope-closures/">scope &amp; closures</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">LAOJIA</a></p>
+        <p><span>发布时间:</span>2018-03-01, 11:34:20</p>
+        <p><span>最后更新:</span>2018-03-01, 11:39:06</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2018/03/01/scope-closures/" title="scope &amp; closures">https://jiamh2005.github.io/2018/03/01/scope-closures/</a>
-            <span class="copy-path" data-clipboard-text="From https://jiamh2005.github.io/2018/03/01/scope-closures/　　By LAOJIA" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/01/scope-closures/" title="scope &amp; closures">https://jiamh2005.github.io/2018/03/01/scope-closures/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://jiamh2005.github.io/2018/03/01/scope-closures/　　作者: LAOJIA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/03/01/两次全球大危机的比较研究/">
+                    两次全球大危机的比较研究
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -957,7 +963,7 @@
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
+        <strong class="toc-title">文章目录</strong>
         
             <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-1-What-is-Scope"><span class="toc-number">1.</span> <span class="toc-text">Chapter 1: What is Scope?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Compiler-Theory"><span class="toc-number">1.1.</span> <span class="toc-text">Compiler Theory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Understanding-Scope"><span class="toc-number">1.2.</span> <span class="toc-text">Understanding Scope</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Cast"><span class="toc-number">1.2.1.</span> <span class="toc-text">The Cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Back-amp-Forth"><span class="toc-number">1.2.2.</span> <span class="toc-text">Back &amp; Forth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compiler-Speak"><span class="toc-number">1.2.3.</span> <span class="toc-text">Compiler Speak</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Engine-Scope-Conversation"><span class="toc-number">1.2.4.</span> <span class="toc-text">Engine/Scope Conversation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz"><span class="toc-number">1.2.5.</span> <span class="toc-text">Quiz</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nested-Scope"><span class="toc-number">1.3.</span> <span class="toc-text">Nested Scope</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Building-on-Metaphors"><span class="toc-number">1.3.1.</span> <span class="toc-text">Building on Metaphors</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Errors"><span class="toc-number">1.4.</span> <span class="toc-text">Errors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Review-TL-DR"><span class="toc-number">1.5.</span> <span class="toc-text">Review (TL;DR)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-Answers"><span class="toc-number">1.5.1.</span> <span class="toc-text">Quiz Answers</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-2-Lexical-Scope"><span class="toc-number">2.</span> <span class="toc-text">Chapter 2: Lexical Scope</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lex-time"><span class="toc-number">2.1.</span> <span class="toc-text">Lex-time</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Look-ups"><span class="toc-number">2.1.1.</span> <span class="toc-text">Look-ups</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cheating-Lexical"><span class="toc-number">2.2.</span> <span class="toc-text">Cheating Lexical</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#eval"><span class="toc-number">2.2.1.</span> <span class="toc-text">eval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#with"><span class="toc-number">2.2.2.</span> <span class="toc-text">with</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Performance"><span class="toc-number">2.2.3.</span> <span class="toc-text">Performance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Review-TL-DR-1"><span class="toc-number">2.3.</span> <span class="toc-text">Review (TL;DR)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-3-Function-vs-Block-Scope"><span class="toc-number">3.</span> <span class="toc-text">Chapter 3: Function vs. Block Scope</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scope-From-Functions"><span class="toc-number">3.1.</span> <span class="toc-text">Scope From Functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hiding-In-Plain-Scope"><span class="toc-number">3.2.</span> <span class="toc-text">Hiding In Plain Scope</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Collision-Avoidance"><span class="toc-number">3.2.1.</span> <span class="toc-text">Collision Avoidance</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Global-“Namespaces”"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">Global “Namespaces”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Module-Management"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">Module Management</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Functions-As-Scopes"><span class="toc-number">3.3.</span> <span class="toc-text">Functions As Scopes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Anonymous-vs-Named"><span class="toc-number">3.3.1.</span> <span class="toc-text">Anonymous vs. Named</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Invoking-Function-Expressions-Immediately"><span class="toc-number">3.3.2.</span> <span class="toc-text">Invoking Function Expressions Immediately</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Blocks-As-Scopes"><span class="toc-number">3.4.</span> <span class="toc-text">Blocks As Scopes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#with-1"><span class="toc-number">3.4.1.</span> <span class="toc-text">with</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#try-catch"><span class="toc-number">3.4.2.</span> <span class="toc-text">try/catch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#let"><span class="toc-number">3.4.3.</span> <span class="toc-text">let</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Garbage-Collection"><span class="toc-number">3.4.3.1.</span> <span class="toc-text">Garbage Collection</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#let-Loops"><span class="toc-number">3.4.3.2.</span> <span class="toc-text">let Loops</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#const"><span class="toc-number">3.4.4.</span> <span class="toc-text">const</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Review-TL-DR-2"><span class="toc-number">3.5.</span> <span class="toc-text">Review (TL;DR)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-4-Hoisting"><span class="toc-number">4.</span> <span class="toc-text">Chapter 4: Hoisting</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chicken-Or-The-Egg"><span class="toc-number">4.1.</span> <span class="toc-text">Chicken Or The Egg?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Compiler-Strikes-Again"><span class="toc-number">4.2.</span> <span class="toc-text">The Compiler Strikes Again</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Functions-First"><span class="toc-number">4.3.</span> <span class="toc-text">Functions First</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Review-TL-DR-3"><span class="toc-number">4.4.</span> <span class="toc-text">Review (TL;DR)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-5-Scope-Closure"><span class="toc-number">5.</span> <span class="toc-text">Chapter 5: Scope Closure</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Enlightenment"><span class="toc-number">5.1.</span> <span class="toc-text">Enlightenment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nitty-Gritty"><span class="toc-number">5.2.</span> <span class="toc-text">Nitty Gritty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Now-I-Can-See"><span class="toc-number">5.3.</span> <span class="toc-text">Now I Can See</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Loops-Closure"><span class="toc-number">5.4.</span> <span class="toc-text">Loops + Closure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Block-Scoping-Revisited"><span class="toc-number">5.4.1.</span> <span class="toc-text">Block Scoping Revisited</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Modules"><span class="toc-number">5.5.</span> <span class="toc-text">Modules</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Modern-Modules"><span class="toc-number">5.5.1.</span> <span class="toc-text">Modern Modules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Future-Modules"><span class="toc-number">5.5.2.</span> <span class="toc-text">Future Modules</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Review-TL-DR-4"><span class="toc-number">5.6.</span> <span class="toc-text">Review (TL;DR)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Appendix-A-Dynamic-Scope"><span class="toc-number">6.</span> <span class="toc-text">Appendix A: Dynamic Scope</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Appendix-B-Polyfilling-Block-Scope"><span class="toc-number">7.</span> <span class="toc-text">Appendix B: Polyfilling Block Scope</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Traceur"><span class="toc-number">7.1.</span> <span class="toc-text">Traceur</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implicit-vs-Explicit-Blocks"><span class="toc-number">7.2.</span> <span class="toc-text">Implicit vs. Explicit Blocks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Performance-1"><span class="toc-number">7.3.</span> <span class="toc-text">Performance</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Appendix-C-Lexical-this"><span class="toc-number">8.</span> <span class="toc-text">Appendix C: Lexical-this</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Appendix-D-Acknowledgments"><span class="toc-number">9.</span> <span class="toc-text">Appendix D: Acknowledgments</span></a></li></ol>
         
@@ -973,10 +979,10 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -998,19 +1004,21 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/2018/03/01/两次全球大危机的比较研究/" title="上一篇: 两次全球大危机的比较研究">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/02/27/Async-Performence/" title="Next: Async&amp;Performence">
+            <a href="/2018/02/27/Async-Performence/" title="下一篇: Async&amp;Performence">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/scope-closures/">scope & closures</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/Async-Performence/">Async&Performence</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/充分利用青春期大脑的学习潜力/">充分利用青春期大脑的学习潜力</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/2007年的访谈/">2007年的访谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/27/又一篇BLOG/">又一篇BLOG</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/两次全球大危机的比较研究/">两次全球大危机的比较研究</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/scope-closures/">scope & closures</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/Async-Performence/">Async&Performence</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/充分利用青春期大脑的学习潜力/">充分利用青春期大脑的学习潜力</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/2007年的访谈/">2007年的访谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/27/又一篇BLOG/">又一篇BLOG</a></li></ul>
 
 
 
@@ -1054,7 +1062,7 @@
           </nav>
       </header>
   </div>
-  <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+  <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
 
       <footer id="footer">
@@ -1064,7 +1072,7 @@
               <div class="visit">
                   
                       <span id="busuanzi_container_site_pv" style='display:none'>
-                          <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                          <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                           </span>
                       </span>
                   
@@ -1073,7 +1081,7 @@
                   
                   
                       <span id="busuanzi_container_page_pv" style='display:none'>
-                          <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                          <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                           </span>
                       </span>
                   
@@ -1084,7 +1092,7 @@
               2018 LAOJIA
           </div>
           <div class="footer-right">
-              <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+              <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
           </div>
         </div>
     </div>
@@ -1115,9 +1123,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window

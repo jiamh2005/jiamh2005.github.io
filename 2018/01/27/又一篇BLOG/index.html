@@ -15,14 +15,17 @@
 
 
 
+<meta name="description" content="利用Postfix和Dovecot搭建IMAP邮件系统遇到的问题（1）错误记录报错：SMTPD：fatal: no SASL authentication mechanisms 这个问题是安装过程中，出现的第一个比较难处理的问题，解决方案找了很久，注意几个配置文件和配置位置。 postfix的配置文件main.cf，注意修改完毕后，用postconf -n确认一下配置是否生效； dovecot的配">
 <meta property="og:type" content="article">
 <meta property="og:title" content="又一篇BLOG">
 <meta property="og:url" content="https://jiamh2005.github.io/2018/01/27/又一篇BLOG/index.html">
 <meta property="og:site_name" content="Spaces of Jia">
+<meta property="og:description" content="利用Postfix和Dovecot搭建IMAP邮件系统遇到的问题（1）错误记录报错：SMTPD：fatal: no SASL authentication mechanisms 这个问题是安装过程中，出现的第一个比较难处理的问题，解决方案找了很久，注意几个配置文件和配置位置。 postfix的配置文件main.cf，注意修改完毕后，用postconf -n确认一下配置是否生效； dovecot的配">
 <meta property="og:locale" content=":lang">
-<meta property="og:updated_time" content="2018-02-27T06:13:59.926Z">
+<meta property="og:updated_time" content="2018-02-28T03:31:51.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="又一篇BLOG">
+<meta name="twitter:description" content="利用Postfix和Dovecot搭建IMAP邮件系统遇到的问题（1）错误记录报错：SMTPD：fatal: no SASL authentication mechanisms 这个问题是安装过程中，出现的第一个比较难处理的问题，解决方案找了很久，注意几个配置文件和配置位置。 postfix的配置文件main.cf，注意修改完毕后，用postconf -n确认一下配置是否生效； dovecot的配">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -245,7 +248,14 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h2 id="利用Postfix和Dovecot搭建IMAP邮件系统遇到的问题"><a href="#利用Postfix和Dovecot搭建IMAP邮件系统遇到的问题" class="headerlink" title="利用Postfix和Dovecot搭建IMAP邮件系统遇到的问题"></a>利用Postfix和Dovecot搭建IMAP邮件系统遇到的问题</h2><p>（1）错误记录报错：SMTPD：fatal: no SASL authentication mechanisms</p>
+<p>这个问题是安装过程中，出现的第一个比较难处理的问题，解决方案找了很久，注意几个配置文件和配置位置。</p>
+<pre><code>postfix的配置文件main.cf，注意修改完毕后，用postconf -n确认一下配置是否生效；
+dovecot的配置文件很多，定位在10-master.conf文件。
+</code></pre><p>仔细核对之后，这个问题解决。</p>
+<p>(2) 邮件客户端报错，无法完成认证，不支持认证方式</p>
+<p>邮件客户端，如雷鸟，可以设置加密方式传递密码，但常用的CRAM-MD5格式，不被postfixadmin提供的MD5-CRYPT支持。因此只能选择不加密的方式传递明文密码，默认情况下服务器是不支持的，因此需要在服务器设置中，取消对这个默认限制；</p>
+
       
     </div>
     
@@ -256,7 +266,7 @@
         <p><span>本文标题:</span><a href="/2018/01/27/又一篇BLOG/">又一篇BLOG</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">LAOJIA</a></p>
         <p><span>发布时间:</span>2018-01-27, 00:51:04</p>
-        <p><span>最后更新:</span>2018-02-27, 14:13:59</p>
+        <p><span>最后更新:</span>2018-02-28, 11:31:51</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/01/27/又一篇BLOG/" title="又一篇BLOG">https://jiamh2005.github.io/2018/01/27/又一篇BLOG/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jiamh2005.github.io/2018/01/27/又一篇BLOG/　　作者: LAOJIA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -286,7 +296,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#利用Postfix和Dovecot搭建IMAP邮件系统遇到的问题"><span class="toc-number">1.</span> <span class="toc-text">利用Postfix和Dovecot搭建IMAP邮件系统遇到的问题</span></a></li></ol>
         
     </div>
     <style>

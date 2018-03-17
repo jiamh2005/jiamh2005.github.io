@@ -24,7 +24,7 @@
 <meta property="og:locale" content=":lang">
 <meta property="og:image" content="https://jiamh2005.github.io/2018/03/01/scope-closures/fig1.png">
 <meta property="og:image" content="https://jiamh2005.github.io/2018/03/01/scope-closures/fig2.png">
-<meta property="og:updated_time" content="2018-03-01T03:39:06.263Z">
+<meta property="og:updated_time" content="2018-03-04T04:58:27.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scope &amp; closures">
 <meta name="twitter:description" content="Chapter 1: What is Scope?One of the most fundamental paradigms of nearly all programming languages is the ability to store values in variables, and later retrieve or modify those values. In fact, the">
@@ -395,7 +395,7 @@
 </blockquote>
 <p>The simple rules for traversing nested <em>Scope</em>: <em>Engine</em> starts at the currently executing <em>Scope</em>, looks for the variable there, then if not found, keeps going up one level, and so on. If the outermost global scope is reached, the search stops, whether it finds the variable or not.</p>
 <h3 id="Building-on-Metaphors"><a href="#Building-on-Metaphors" class="headerlink" title="Building on Metaphors"></a>Building on Metaphors</h3><p>To visualize the process of nested <em>Scope</em> resolution, I want you to think of this tall building.</p>
-<p><img src="/2018/03/01/scope-closures/fig1.png" width="250"></p>
+<p><img src="fig1.png" width="250"></p>
 <p>The building represents our program’s nested <em>Scope</em> rule set. The first floor of the building represents your currently executing <em>Scope</em>, wherever you are. The top level of the building is the global <em>Scope</em>.</p>
 <p>You resolve LHS and RHS references by looking on your current floor, and if you don’t find it, taking the elevator to the next floor, looking there, then the next, and so on. Once you get to the top floor (the global <em>Scope</em>), you either find what you’re looking for, or you don’t. But you have to stop regardless.</p>
 <h2 id="Errors"><a href="#Errors" class="headerlink" title="Errors"></a>Errors</h2><p>Why does it matter whether we call it LHS or RHS?</p>
@@ -440,7 +440,7 @@
 <p>Let’s consider this block of code:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> b = a * <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log( a, b, c );</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	bar(b * <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo( <span class="number">2</span> ); <span class="comment">// 2 4 12</span></span><br></pre></td></tr></table></figure>
 <p>There are three nested scopes inherent in this code example. It may be helpful to think about these scopes as bubbles inside of each other.</p>
-<p><img src="/2018/03/01/scope-closures/fig2.png" width="500"></p>
+<p><img src="fig2.png" width="500"></p>
 <p><strong>Bubble 1</strong> encompasses the global scope, and has just one identifier in it: <code>foo</code>.</p>
 <p><strong>Bubble 2</strong> encompasses the scope of <code>foo</code>, which includes the three identifiers: <code>a</code>, <code>bar</code> and <code>b</code>.</p>
 <p><strong>Bubble 3</strong> encompasses the scope of <code>bar</code>, and it includes just one identifier: <code>c</code>.</p>
@@ -929,7 +929,7 @@
         <p><span>本文标题:</span><a href="/2018/03/01/scope-closures/">scope &amp; closures</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">LAOJIA</a></p>
         <p><span>发布时间:</span>2018-03-01, 11:34:20</p>
-        <p><span>最后更新:</span>2018-03-01, 11:39:06</p>
+        <p><span>最后更新:</span>2018-03-04, 12:58:27</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/03/01/scope-closures/" title="scope &amp; closures">https://jiamh2005.github.io/2018/03/01/scope-closures/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jiamh2005.github.io/2018/03/01/scope-closures/　　作者: LAOJIA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -1018,7 +1018,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/两次全球大危机的比较研究/">两次全球大危机的比较研究</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/scope-closures/">scope & closures</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/Async-Performence/">Async&Performence</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/充分利用青春期大脑的学习潜力/">充分利用青春期大脑的学习潜力</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/2007年的访谈/">2007年的访谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/27/又一篇BLOG/">又一篇BLOG</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/17/Stay-Hungry-Stay-Foolish/">Stay Hungry, Stay Foolish</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/两次全球大危机的比较研究/">两次全球大危机的比较研究</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/scope-closures/">scope & closures</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/Async-Performence/">Async&Performence</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/充分利用青春期大脑的学习潜力/">充分利用青春期大脑的学习潜力</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/2007年的访谈/">2007年的访谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/27/又一篇BLOG/">又一篇BLOG</a></li></ul>
 
 
 
